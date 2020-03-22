@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="text-align: center;">
+<br/>
+<a class="test1" href="javascript:void(0);">简单Get请求</a><br/>
+<a class="test2" href="javascript:void(0);">简单Post表单请求</a><br/>
+<a class="test3" href="javascript:void(0);">复杂请求</a><br/>
+<a class="test4" href="javascript:void(0);">JSONP请求</a><br/>
+
+<a class="test5" href="javascript:void(0);">复杂代理请求测试</a><br/>
+<p id="jsonpTxt"></p>
+</body>
+<script src="jquery.js"></script>
+<script>
+    $(".test1").on("click", function () {
+        $.ajax(
+            {
+                url:"http://localhost:9092/ajaxGetReq",
+                type:"GET",
+                success: function(data) {
+                    console.log(data);
+                }
+
+            }
+        );
+
+    })
+
+    $(".test2").on("click", function () {
+        $.ajax(
+            {
+                url:"http://localhost:9092/ajaxPostReq",
+                data:{name:"max"},
+                type:"POST",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+
+            }
+        );
+
+    })
+
+    $(".test3").on("click", function () {
+        $.ajax(
+            {
+                url:"http://localhost:9092/ajaxPostReq",
+                data:{name:"max"},
+                type:"POST",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Content-Type","application/json")
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+
+            }
+        );
+
+    })
+
+    $(".test4").on("click", function () {
+        var scriptTag = document.createElement("script");
+        scriptTag.src = "http://localhost:9092/jsonpReq";
+        document.body.appendChild(scriptTag);
+
+    })
+
+    function jsFun(obj) {
+        document.getElementById("jsonpTxt").innerHTML=obj.name;
+    }
+
+
+    $(".test5").on("click", function () {
+        $.ajax(
+            {
+                url:"/cros2/ajaxPostReq",
+                data:{name:"max"},
+                type:"POST",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Content-Type","application/json")
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+
+            }
+        );
+
+    })
+</script>
+</html>
