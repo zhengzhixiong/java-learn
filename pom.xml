@@ -23,6 +23,7 @@
 
     <modules>
 
+        <module>jmax4you-mqtt</module>
     </modules>
     <properties>
         <!--编译环境参数声明-->
@@ -297,6 +298,12 @@
                 <groupId>org.javassist</groupId>
                 <artifactId>javassist</artifactId>
                 <version>3.26.0-GA</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.paho</groupId>
+                <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+                <version>1.2.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
