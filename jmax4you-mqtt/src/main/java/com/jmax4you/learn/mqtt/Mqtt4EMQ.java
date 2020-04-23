@@ -14,7 +14,7 @@ public class Mqtt4EMQ {
     static String password = "123456";
 
     public static void main(String[] args) {
-        String topic = "$share/group1/maxTopic";
+        String topic = "maxTopic";
         String content = "Message from MqttPublishSample";
         int qos = 0;
         String broker = "tcp://192.168.200.176:1883";

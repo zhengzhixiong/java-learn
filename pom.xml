@@ -24,6 +24,10 @@
     <modules>
 
         <module>jmax4you-mqtt</module>
+        <module>jmax4you-design</module>
+        <module>jmax4you-admin</module>
+        <module>jmax4you-redis</module>
+        <module>jmax4you-jpa</module>
     </modules>
     <properties>
         <!--编译环境参数声明-->
@@ -35,10 +39,12 @@
         <!--1.5.9.RELEASE=Camden.SR7-->
         <!--1.5.13.RELEASE=Edgware.SR4-->
         <!--2.0.3.RELEASE=Finchley.RELEASE-->
+        <!--2.1.0.RELEASE=Finchley.SR2-->
+        <!--2.2.2.RELEASE=Hoxton SR3-->
         <!--spring boot和spring cloud版本声明 1.5.9.RELEASE; -->
-        <spring.boot.version>1.5.18.RELEASE</spring.boot.version>
+        <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
         <!--cloud 版本Camden.SR7对应boot 1.5.9;-->
-        <spring.cloud.version>Edgware.SR5</spring.cloud.version>
+        <spring.cloud.version>Hoxton.SR3</spring.cloud.version>
         <!--对应1.3.11 cloud 版本-->
         <spring.cloud.alibaba.version>0.1.1.RELEASE</spring.cloud.alibaba.version>
         <!--阿里相关jar-->
@@ -93,6 +99,26 @@
                 <version>${spring.cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>3.12.4</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server</artifactId>
+                <version>2.2.2</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server-ui</artifactId>
+                <version>2.2.2</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>2.2.2</version>
             </dependency>
             <!-- 数据库驱驱动 oracle -->
             <dependency>

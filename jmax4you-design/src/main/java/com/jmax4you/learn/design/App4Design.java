@@ -1,4 +1,4 @@
-package com.jmax4you.learn.cors1;
+package com.jmax4you.learn.design;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,28 +7,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author max.zheng
- * @date 2020-03-21 20:10
+ * @date 2020-03-27 17:20
  */
 @SpringBootApplication
-public class App4Cors1 {
+public class App4Design {
     public static void main(String[] args) {
-        SpringApplication springApplication = new SpringApplication(App4Cors1.class);
+        SpringApplication springApplication = new SpringApplication(App4Design.class);
         springApplication.run(args);
     }
+
     @Controller
     public class AppController {
-//        @Autowired
-//        private Animal animal;
         @RequestMapping(value = {"/"})
         public String index() {
-//            System.out.println(animal.eat());
-
             return "index";
 
         }
-
-
     }
-
-
 }
