@@ -28,6 +28,7 @@
         <module>jmax4you-admin</module>
         <module>jmax4you-redis</module>
         <module>jmax4you-jpa</module>
+        <module>jmax4you-cmd</module>
     </modules>
     <properties>
         <!--编译环境参数声明-->

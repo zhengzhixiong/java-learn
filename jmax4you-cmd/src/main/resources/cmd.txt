@@ -1,0 +1,7 @@
+java -jar -Xms256m -Xmx256m -Dserver.port=9090 jmax4you-cmd-1.0.0-SNAPSHOT.jar
+
+./certbot-auto certonly  --standalone -n --agree-tos -d *.code4open.com --email '358744287@qq.com' --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
+
+./certbot-auto certonly --agree-tos --manual-public-ip-logging-ok -d *.code4open.com --email '358744287@qq.com' --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
+
+./certbot-auto certonly --agree-tos --manual-public-ip-logging-ok -d *.code4open.com -d *.free.code4open.com --email '358744287@qq.com' --manual --manual-auth-hook /jmax/letsencrypt/authenticatorApi.sh --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
