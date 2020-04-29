@@ -1,9 +1,11 @@
 package com.jmax4you.learn.cmd.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.aliyuncs.alidns.model.v20150109.AddDomainRecordRequest;
 import com.jmax4you.learn.cmd.dto.CmdResult;
 import com.jmax4you.learn.cmd.dto.ManualAuthHook;
+import com.jmax4you.learn.cmd.service.OprateDomainService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 
 /**
  * @author max.zheng
@@ -21,6 +22,9 @@ import java.io.OutputStream;
 @Controller
 @RequestMapping("/cmd")
 public class CmdController {
+
+    @Autowired
+    private OprateDomainService oprateDomainService;
 
     @RequestMapping("/getOs")
     @ResponseBody
@@ -108,6 +112,17 @@ public class CmdController {
     @ResponseBody
     public String hook(@RequestBody ManualAuthHook manualAuthHook) {
         System.out.println(JSON.toJSON(manualAuthHook));
+        //https://help.aliyun.com/document_detail/29821.html?spm=a2c4g.11186623.6.620.5c0a13b6WLhUBb
+        AddDomainRecordRequest request = new AddDomainRecordRequest();
+        //coder4open.com
+        request.setDomainName("coder4open.com");
+        //主机头
+        request.setRR(manualAuthHook.getDomain());
+        //解析类型
+        request.setType("TXT");
+        //解析值
+        request.setValue(manualAuthHook.getValidation());
+        oprateDomainService.addDomainRecord(request);
         return "ok";
     }
 
